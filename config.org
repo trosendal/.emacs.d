@@ -1,0 +1,64 @@
+#+TITLE: Emacs Configuration
+#+AUTHOR: Stefan Widgren
+#+OPTIONS: toc:4 h:4
+
+* Configuration
+
+** Personal Information
+
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Stefan Widgren"
+      user-mail-address "stefan.widgren@gmail.com")
+#+END_SRC
+** Mode line
+
+#+BEGIN_SRC emacs-lisp
+(fset 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+** Delete trailing space
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+END_SRC
+
+** R settings
+
+#+BEGIN_SRC emacs-lisp
+(use-package ess
+  :defer t
+  :ensure t
+  :bind ("C-c r" . R))
+(setq inferior-R-args "--no-restore-history --no-save ")
+(setq ess-history-file nil)
+#+END_SRC
+
+** Backups
+#+BEGIN_SRC emacs-lisp
+(if (file-exists-p "~/.emacs.d/backups")
+    nil
+  (make-directory "~/.emacs.d/backups"))
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(setq delete-old-versions -1)
+(setq version-control t)
+(setq vc-make-backup-files t)
+(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
+#+END_SRC
+
+** Org mode
+#+BEGIN_SRC emacs-lisp
+(use-package org
+  :defer t
+  :ensure t)
+#+END_SRC
+
+*** Keyboard shortcuts
+
+#+BEGIN_SRC emacs-lisp
+(bind-key "C-c l" 'org-store-link)
+(bind-key "C-c c" 'org-capture)
+(bind-key "C-c a" 'org-agenda)
+(bind-key "C-c b" 'org-iswitchb)
+#+END_SRC
