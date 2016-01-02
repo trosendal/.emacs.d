@@ -76,3 +76,12 @@
 (bind-key "C-c a" 'org-agenda)
 (bind-key "C-c b" 'org-iswitchb)
 #+END_SRC
+
+** Windows resize
+#+BEGIN_SRC emacs-lisp
+;; http://emacswiki.org/emacs/WindowResize
+(bind-key "S-C-<left>" 'shrink-window-horizontally)
+(bind-key "S-C-<right>" 'enlarge-window-horizontally)
+(bind-key "S-C-<up>" 'shrink-window)
+(bind-key "S-C-<down>" 'enlarge-window)
+#+END_SRC
