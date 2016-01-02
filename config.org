@@ -21,6 +21,15 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+END_SRC
 
+** Magit
+
+#+BEGIN_SRC emacs-lisp
+(use-package magit
+  :defer t
+  :ensure t
+  :bind ("C-x g" . magit-status))
+#+END_SRC
+
 ** R settings
 
 #+BEGIN_SRC emacs-lisp
