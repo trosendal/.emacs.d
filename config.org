@@ -85,3 +85,10 @@
 (bind-key "S-C-<up>" 'shrink-window)
 (bind-key "S-C-<down>" 'enlarge-window)
 #+END_SRC
+
+** Key Bindings
+#+BEGIN_SRC emacs-lisp
+(bind-key "C-c s" 'shell)
+(bind-key "C-c e" 'eshell)
+(bind-key "C-c m" 'compile)
+#+END_SRC
