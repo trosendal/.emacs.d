@@ -37,6 +37,8 @@
   :defer t
   :ensure t
   :bind ("C-c r" . R))
+(autoload 'R-mode "ess-site.el" "" t)
+(add-to-list 'auto-mode-alist '("\\.R\\'" . R-mode))
 (setq inferior-R-args "--no-restore-history --no-save ")
 (setq ess-history-file nil)
 #+END_SRC
