@@ -15,6 +15,11 @@
 #+BEGIN_SRC emacs-lisp
 (fset 'yes-or-no-p 'y-or-n-p)
 #+END_SRC
+** Color theme
+#+BEGIN_SRC emacs-lisp
+(load-theme 'misterioso)
+#+END_SRC
+
 ** Delete trailing space
 
 #+BEGIN_SRC emacs-lisp
