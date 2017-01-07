@@ -75,7 +75,7 @@
           :weight semibold
           :slant italic
           :inherit (font-lock-string-face)))))
-   '(font-lock-function-name-face ((t (:foreground "#d55e00"))))
+   '(font-lock-function-name-face ((t (:weight semibold :foreground "blue"))))
    '(font-lock-keyword-face ((t (:weight bold :foreground "#56b4e9"))))
    '(font-lock-negation-char-face ((t nil)))
    '(font-lock-preprocessor-face
