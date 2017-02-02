@@ -110,6 +110,15 @@
             (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
  #+END_SRC
 
+** Password manager
+Interface to [[https://www.passwordstore.org/][pass]].
+
+#+BEGIN_SRC emacs-lisp
+(use-package helm-pass
+  :ensure t
+  :commands (helm-pass))
+#+END_SRC
+
 ** Swiper
 #+BEGIN_SRC emacs-lisp
   (use-package counsel
