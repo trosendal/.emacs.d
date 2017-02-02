@@ -1,0 +1,3 @@
+[submodule "packages/polymode"]
+	path = packages/polymode
+	url = https://github.com/vspinu/polymode.git
