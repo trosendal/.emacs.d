@@ -124,6 +124,7 @@ Use C-s or C-. to move to the next file.
 (bind-key "C-c s" 'shell)
 (bind-key "C-c e" 'eshell)
 (bind-key "C-c m" 'compile)
+(bind-key (kbd "<M-dead-circumflex>") 'delete-indentation)
 #+END_SRC
 
 ** C code
