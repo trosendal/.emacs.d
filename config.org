@@ -105,6 +105,11 @@ Use C-s or C-. to move to the next file.
 (bind-key "C-c b" 'org-iswitchb)
 #+END_SRC
 
+** Fullscreen
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(initial-frame-alist (quote ((fullscreen . maximized)))))
+#+END_SRC
 ** Windows resize
 #+BEGIN_SRC emacs-lisp
 ;; http://emacswiki.org/emacs/WindowResize
