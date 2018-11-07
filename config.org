@@ -1,7 +1,3 @@
-#+TITLE: Emacs Configuration
-#+AUTHOR: Stefan Widgren
-#+OPTIONS: toc:4 h:4
-
 * Configuration
 
 ** Personal Information
@@ -177,3 +173,10 @@ Interface to [[https://www.passwordstore.org/][pass]].
 #+BEGIN_SRC emacs-lisp
 (setq ring-bell-function 'ignore)
 #+END_SRC
+
+* Org-mode configuration
+#+STARTUP: indent
+#+STARTUP: hidestars
+#+TITLE: Emacs Configuration
+#+AUTHOR: Stefan Widgren
+#+OPTIONS: toc:4 h:4
