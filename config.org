@@ -90,6 +90,11 @@ Use C-s or C-. to move to the next file.
 (use-package org
   :defer t
   :ensure t)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((R . t)))
+
 #+END_SRC
 
 *** Key Bindings

@@ -64,15 +64,21 @@
  '(hl-fg-colors
    (quote
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(magit-diff-use-overlays nil)
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (use-package solarized-theme popup password-store magit helm-core ess counsel)))
+    (org auto-org-md markdown-mode pdf-tools use-package solarized-theme popup password-store magit helm-core ess counsel)))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
+ '(safe-local-variable-values
+   (quote
+    ((eval let nil
+           (org-babel-goto-named-src-block "startblock")
+           (org-babel-execute-src-block)))))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
  '(term-default-bg-color "#fdf6e3")
  '(term-default-fg-color "#657b83")
