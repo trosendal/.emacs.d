@@ -17,10 +17,14 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
 (eval-when-compile
   (require 'use-package))
+
+(unless (package-installed-p 'diminish)
+  (package-refresh-contents)
+  (package-install 'diminish))
 (require 'diminish)
+
 (require 'bind-key)
 
 (org-babel-load-file (concat user-emacs-directory "config.org"))
