@@ -97,6 +97,13 @@ Use C-s or C-. to move to the next file.
 
 #+END_SRC
 
+*** Default directories
+
+#+BEGIN_SRC emacs-lisp
+(setq org-directory (expand-file-name "~/org"))
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+#+END_SRC
+
 *** Key Bindings
 
 #+BEGIN_SRC emacs-lisp
@@ -106,6 +113,10 @@ Use C-s or C-. to move to the next file.
 (bind-key "C-c b" 'org-iswitchb)
 #+END_SRC
 
+*** Refile
+#+BEGIN_SRC emacs-lisp
+(setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+#+END_SRC
 ** Fullscreen
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
