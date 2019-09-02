@@ -3,8 +3,8 @@
 ** Personal Information
 
 #+BEGIN_SRC emacs-lisp
-(setq user-full-name "Stefan Widgren"
-      user-mail-address "stefan.widgren@gmail.com")
+(setq user-full-name "Thomas Rosendal"
+      user-mail-address "thomas.rosendal@gmail.com")
 #+END_SRC
 ** Mode line
 
@@ -194,5 +194,5 @@ Interface to [[https://www.passwordstore.org/][pass]].
 #+STARTUP: indent
 #+STARTUP: hidestars
 #+TITLE: Emacs Configuration
-#+AUTHOR: Stefan Widgren
+#+AUTHOR: Thomas Rosendal
 #+OPTIONS: toc:4 h:4
