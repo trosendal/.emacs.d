@@ -82,12 +82,18 @@ Use C-s or C-. to move to the next file.
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-(setq delete-old-versions -1)
-(setq version-control t)
-(setq vc-make-backup-files t)
-(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
-#+END_SRC
+(setq backup-by-copying t)
+(setq delete-old-versions t)
+(setq delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
 
+#+END_SRC
+(setq delete-by-moving-to-trash t)
+#+BEGIN_SRC emacs-lisp
+
+#+END_SRC
 ** Column number
 #+BEGIN_SRC emacs-lisp
 ;; Show column-number
@@ -129,6 +135,10 @@ Use C-s or C-. to move to the next file.
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(set-window-fringes nil 0 0)
 #+END_SRC
 ** Windows resize
 #+BEGIN_SRC emacs-lisp
@@ -188,8 +198,42 @@ Interface to [[https://www.passwordstore.org/][pass]].
       (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
 #+END_SRC
+** Multicursor
+#+BEGIN_SRC emacs-lisp
+(use-package multiple-cursors
+  :ensure t)
+#+END_SRC
+** LaTeX/Markdown
+#+BEGIN_SRC emacs-lisp
+(use-package auctex
+  :ensure t)
+(use-package auto-complete-auctex
+  :ensure t)
+(use-package tex-site
+  :ensure t)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(add-hook 'LaTeX-mode-hook 'visual-line-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-buffer)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(add-hook 'LaTeX-mode-hook 'auto-fill-mode)
+(setq LaTeX-item-indent 0)
+(setq LaTeX-indent-level 2)
+(setq TeX-brace-indent-level 2)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq TeX-parse-self t) ; Enable parse on load.
+(setq TeX-auto-save t) ; Enable parse on save.
+(use-package markdown-mode
+  :ensure t)
+(add-hook 'markdown-mode-hook 'flyspell-mode)
+(add-hook 'markdown-mode-hook 'flyspell-buffer)
+(add-hook 'markdown-mode-hook 'auto-fill-mode)
+(use-package poly-mode
+  :ensure t)
+#+END_SRC
 ** Boomarks
-
 #+BEGIN_SRC emacs-lisp
 (bind-key "<XF86WakeUp>" 'bookmark-jump)
 #+END_SRC
@@ -197,7 +241,46 @@ Interface to [[https://www.passwordstore.org/][pass]].
 #+BEGIN_SRC emacs-lisp
 (setq ring-bell-function 'ignore)
 #+END_SRC
-
+** Starting place
+#+BEGIN_SRC emacs-lisp
+(split-window-right)
+(dired "~/projects/")
+(dired-hide-details-mode)
+(text-scale-set -1)
+(other-window 1)
+(find-file "~/projects/schedule/schedule.org")
+#+END_SRC
+** Dictionaries
+#+BEGIN_SRC emacs-lisp
+(setq ispell-dictionary "british")
+(defun dict-swedish ()
+  "Change dictionary to Swedish"
+  (interactive)
+  (flyspell-mode-off)
+  (ispell-change-dictionary "svenska")
+  (flyspell-buffer)
+  (flyspell-mode)
+  )
+(defun dict-english ()
+  "Change dictionary to English"
+  (interactive)
+  (flyspell-mode-off)
+  (ispell-change-dictionary "british")
+  (flyspell-buffer)
+  (flyspell-mode-on)
+  )
+#+END_SRC
+** Open files with system from dired mode
+#+BEGIN_SRC emacs-lisp
+(defun dired-open-file ()
+  "In dired, open the file named on this line."
+  (interactive)
+  (let* ((file (dired-get-filename nil t)))
+    (message "Opening %s..." file)
+    (call-process "xdg-open" nil 0 nil file)
+    (message "Opening %s done" file)))
+(global-set-key (kbd "<f4>") 'dired-open-file)
+#+END_SRC
 * Org-mode configuration
 #+STARTUP: indent
 #+STARTUP: hidestars
