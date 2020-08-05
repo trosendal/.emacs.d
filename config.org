@@ -1,5 +1,4 @@
 * Configuration
-
 ** Personal Information
 
 #+BEGIN_SRC emacs-lisp
@@ -209,8 +208,6 @@ Interface to [[https://www.passwordstore.org/][pass]].
   :ensure t)
 (use-package auto-complete-auctex
   :ensure t)
-(use-package tex-site
-  :ensure t)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (add-hook 'LaTeX-mode-hook 'visual-line-mode)
@@ -230,7 +227,7 @@ Interface to [[https://www.passwordstore.org/][pass]].
 (add-hook 'markdown-mode-hook 'flyspell-mode)
 (add-hook 'markdown-mode-hook 'flyspell-buffer)
 (add-hook 'markdown-mode-hook 'auto-fill-mode)
-(use-package poly-mode
+(use-package poly-markdown
   :ensure t)
 #+END_SRC
 ** Boomarks
