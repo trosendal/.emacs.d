@@ -204,10 +204,6 @@ Interface to [[https://www.passwordstore.org/][pass]].
 #+END_SRC
 ** LaTeX/Markdown
 #+BEGIN_SRC emacs-lisp
-(use-package auctex
-  :ensure t)
-(use-package auto-complete-auctex
-  :ensure t)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (add-hook 'LaTeX-mode-hook 'visual-line-mode)
