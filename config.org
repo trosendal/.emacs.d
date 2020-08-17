@@ -36,11 +36,23 @@
     :defer t
     :ensure t
     :bind ("C-c r" . R))
+  (use-package company
+    :defer t
+    :ensure t)
   (autoload 'R-mode "ess-site.el" "" t)
   (add-to-list 'auto-mode-alist '("\\.R\\'" . R-mode))
   (setq inferior-R-args "--no-restore-history --no-save ")
   (setq ess-history-file nil)
   (setq ess-use-company t)
+  (setq tab-always-indent 'complete)
+  (setq company-idle-delay 0.5
+      company-show-numbers t
+      company-minimum-prefix-length 2
+      company-tooltip-flip-when-above t)
+  (add-hook 'ess-mode-hook 'comapany-R-args)
+  (add-hook 'ess-mode-hook 'comapany-R-objects)
+  (add-hook 'ess-mode-hook 'comapany-R-library)
+  (global-company-mode)
 
   ;; Use the previous behavior (i.e. underscore inserting '<-')
   (use-package ess-r-mode
