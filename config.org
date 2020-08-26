@@ -40,7 +40,6 @@
   (add-to-list 'auto-mode-alist '("\\.R\\'" . R-mode))
   (setq inferior-R-args "--no-restore-history --no-save ")
   (setq ess-history-file nil)
-  (setq ess-use-company t)
 
   ;; Use the previous behavior (i.e. underscore inserting '<-')
   (use-package ess-r-mode
