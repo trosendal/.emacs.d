@@ -40,6 +40,8 @@
   (add-to-list 'auto-mode-alist '("\\.R\\'" . R-mode))
   (setq inferior-R-args "--no-restore-history --no-save ")
   (setq ess-history-file nil)
+  (use-package poly-R
+    :ensure t)
 
   ;; Use the previous behavior (i.e. underscore inserting '<-')
   (use-package ess-r-mode
