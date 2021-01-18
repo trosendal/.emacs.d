@@ -50,6 +50,13 @@
           ("_" . ess-insert-assign))
     (:map inferior-ess-r-mode-map
           ("_" . ess-insert-assign)))
+
+  ;; Use autocomplete in an R script
+  (use-package auto-complete
+    :defer t
+    :ensure t)
+  (ac-config-default)
+  (setq ess-tab-complete-in-script t)
 #+END_SRC
 
 ** Recent files
