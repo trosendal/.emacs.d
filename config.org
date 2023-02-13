@@ -259,7 +259,7 @@ Interface to [[https://www.passwordstore.org/][pass]].
   "Change dictionary to Swedish"
   (interactive)
   (flyspell-mode-off)
-  (ispell-change-dictionary "svenska")
+  (ispell-change-dictionary "sv_SE")
   (flyspell-buffer)
   (flyspell-mode)
   )
@@ -267,7 +267,7 @@ Interface to [[https://www.passwordstore.org/][pass]].
   "Change dictionary to English"
   (interactive)
   (flyspell-mode-off)
-  (ispell-change-dictionary "british")
+  (ispell-change-dictionary "en_GB")
   (flyspell-buffer)
   (flyspell-mode-on)
   )
