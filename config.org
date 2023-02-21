@@ -109,21 +109,23 @@ Use C-s or C-. to move to the next file.
 #+END_SRC
 ** Org mode
 #+BEGIN_SRC emacs-lisp
-(use-package org
-  :defer t
-  :ensure t)
+  (use-package org
+    :defer t
+    :ensure t)
 
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((R . t)))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((R . t)))
 
+  (add-hook 'org-mode-hook 'auto-fill-mode)
+  (add-hook 'org-mode-hook 'fly-spell-mode)
 #+END_SRC
 
 *** Default directories
 
 #+BEGIN_SRC emacs-lisp
-(setq org-directory (expand-file-name "~/org"))
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-directory (expand-file-name "~/org/"))
+(setq org-default-notes-file (concat org-directory "/todo.org"))
 #+END_SRC
 
 *** Key Bindings
@@ -137,7 +139,9 @@ Use C-s or C-. to move to the next file.
 
 *** Refile
 #+BEGIN_SRC emacs-lisp
-(setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+  (setq org-agenda-files (list "~/org/")
+        org-refile-targets '((org-agenda-files :maxlevel . 1))
+        )
 #+END_SRC
 ** Fullscreen
 #+BEGIN_SRC emacs-lisp
@@ -250,7 +254,7 @@ Interface to [[https://www.passwordstore.org/][pass]].
 (dired-hide-details-mode)
 (text-scale-set -1)
 (other-window 1)
-(find-file "~/projects/schedule/schedule.org")
+(find-file "~/org/todo.org")
 #+END_SRC
 ** Dictionaries
 #+BEGIN_SRC emacs-lisp
