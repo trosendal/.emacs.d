@@ -118,16 +118,22 @@ Use C-s or C-. to move to the next file.
    '((R . t)))
 
   (add-hook 'org-mode-hook 'auto-fill-mode)
-  (add-hook 'org-mode-hook 'fly-spell-mode)
+  ;; (add-hook 'org-mode-hook 'fly-spell-mode)
 #+END_SRC
 
 *** Default directories
 
 #+BEGIN_SRC emacs-lisp
 (setq org-directory (expand-file-name "~/org/"))
-(setq org-default-notes-file (concat org-directory "/todo.org"))
+(setq org-default-notes-file (concat org-directory "/notes.org"))
 #+END_SRC
 
+*** Setup ORG capture templates
+#+BEGIN_SRC emacs-lisp
+    (setq org-capture-templates
+          '(("t" "Todo" entry (file "~/org/notes.org")
+             "\n* TODO %?\n   - State \"TODO\"       from          %T\n":clock-in :clock-resume)))
+#+END_SRC
 *** Key Bindings
 
 #+BEGIN_SRC emacs-lisp
