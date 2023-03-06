@@ -57,6 +57,13 @@
     :ensure t)
   (ac-config-default)
   (setq ess-tab-complete-in-script t)
+  ;; When starting R, don't look for the 'project' just the directory
+  ;; I'm standing in of the dir of the file that is in the current
+  ;; buffer.
+  (defun my-ess-startup-directory-function ()
+    "Force ESS to use `default-directory' as its startup directory."
+    default-directory)
+  (setq ess-startup-directory-function 'my-ess-startup-directory-function)
 #+END_SRC
 
 ** Recent files
@@ -83,25 +90,42 @@ Use C-s or C-. to move to the next file.
 
 ** Backups
 #+BEGIN_SRC emacs-lisp
-(if (file-exists-p "~/.emacs.d/backups")
-    nil
-  (make-directory "~/.emacs.d/backups"))
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+  (if (file-exists-p "~/.emacs.d/backups")
+      nil
+    (make-directory "~/.emacs.d/backups"))
+  (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-(setq backup-by-copying t)
-(setq delete-old-versions t)
-(setq delete-old-versions t
-      kept-new-versions 6
-      kept-old-versions 2
-      version-control t)
-
+  (setq backup-by-copying t)
+  (setq delete-old-versions t)
+  (setq delete-old-versions t
+        kept-new-versions 6
+        kept-old-versions 2
+        version-control t)
 #+END_SRC
-(setq delete-by-moving-to-trash t)
+
+*** Move files to trash on delete
 #+BEGIN_SRC emacs-lisp
-
+  (setq delete-by-moving-to-trash t)
 #+END_SRC
+
+*** Don't backup stuff in the /dev/shm directory.
+This is where pass writes temp files and results in bugs where these
+files are backedup by emacs with plain text passwords.
+
+#+BEGIN_SRC emacs-lisp
+  (defvar backup-inhibit-file-name-regexp "/dev/shm"
+    "Files whose full path matches this regular expression will not be backed up.")
+  (defun regexp-backup-enable-predicate (filename)
+    "Disable backups for files whose name matches `backup-inhibit-file-name-regexp'.
+  Also call `normal-backup-enable-predicate'."
+    (save-match-data
+      (and (not (string-match backup-inhibit-file-name-regexp filename))
+           (normal-backup-enable-predicate filename))))
+  (setq backup-enable-predicate 'regexp-backup-enable-predicate)
+#+END_SRC
+
 ** Column number
 #+BEGIN_SRC emacs-lisp
 ;; Show column-number
