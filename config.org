@@ -64,6 +64,16 @@
     "Force ESS to use `default-directory' as its startup directory."
     default-directory)
   (setq ess-startup-directory-function 'my-ess-startup-directory-function)
+
+  ;; zoom in the ESS help window which is used for View() in R
+  (defun my-ess-data-view-setup ()
+    "Customize the font size and keybindings in ESS data view buffers."
+    ;; Set the text scale to increase the font size (adjust the number as needed)
+    (text-scale-set 2)
+    ;; Bind keys for increasing and decreasing text size in this buffer
+    (local-set-key (kbd "C-+") 'text-scale-increase)
+    (local-set-key (kbd "C--") 'text-scale-decrease))
+(add-hook 'ess-help-mode-hook 'my-ess-data-view-setup)
 #+END_SRC
 
 ** Recent files
@@ -323,3 +333,9 @@ Interface to [[https://www.passwordstore.org/][pass]].
 #+TITLE: Emacs Configuration
 #+AUTHOR: Thomas Rosendal
 #+OPTIONS: toc:4 h:4
+
+
+* Font size default in new buffers
+#+BEGIN_SRC emacs-lisp
+ (set-face-attribute 'default nil :height 180)
+#+END_SRC
